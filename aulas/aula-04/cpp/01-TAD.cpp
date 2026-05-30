@@ -16,6 +16,24 @@ void adicionar(int dados[], int &tamanho, int capacidade, int x) {
     tamanho++;
 }
 
+void inserirNoInicio(int dados[], int &tamanho, int capacidade, int x) {
+    if (tamanho >= capacidade) return;
+    for (int i = tamanho; i > 0; i--) {
+        dados[i] = dados[i - 1];
+    }
+    dados[0] = x;
+    tamanho++;
+}
+
+void inserirNoMeio(int dados[], int &tamanho, int capacidade, int pos, int x) {
+    if (pos < 0 || pos > tamanho || tamanho >= capacidade) return;
+    for (int i = tamanho; i > pos; i--) {
+        dados[i] = dados[i - 1];
+    }
+    dados[pos] = x;
+    tamanho++;
+}
+
 void remover(int dados[], int &tamanho, int indice) {
     if (indice < 0 || indice >= tamanho) return;
     for (int i = indice; i < tamanho - 1; i++) {
